@@ -46,20 +46,39 @@ namespace GPA_Calculator
         {
             if (option == 1)
             {
+                double convered_user_input;
                 Console.WriteLine("Please enter your course grades (0 - 7)");
-                List<string> grade_list = new List<string>();
-                string userInput = Console.ReadLine();
-                for (int next = 0; next <= 8; next++)
+                List<double> grade_list = new List<double>();
+                for (int next = 0; next <= 7; next++)
                 {
-                    userInput = Console.ReadLine();
-                    Console.WriteLine(Convert.ToString(next) + ") " + userInput);
-                    grade_list.Add(userInput);
+                    string userInput = Console.ReadLine();
+                    convered_user_input = Convert.ToDouble(userInput);
+                    Console.WriteLine(Convert.ToString(next + 1) + ") " + userInput);
+                    grade_list.Add(convered_user_input);
                 }
-                Console.WriteLine(grade_list);
+                Console.WriteLine(grade_list.Count);
+                for (int next = 0; next <= grade_list.Count - 1; next++)
+                {
+                    Console.WriteLine(grade_list[next]);
+                }
+                double sum = 0;
+                double course_cal = 0;
+                for (int item = 0; item <= grade_list.Count - 1; item++)
+                {
+                    course_cal = grade_list[item];
+                    course_cal = course_cal * 4.5;
+                    sum = sum + course_cal;
+                }
+                double total = sum / (4.5 * 8);
+                Console.WriteLine("Result: " + total);
+                
             }
             else if (option == 2)
             {
+                double known_gpa = 0;
 
+                Console.WriteLine("Please enter your gpa:");
+                known_gpa = Console.ReadLine();
             }
         }
 
