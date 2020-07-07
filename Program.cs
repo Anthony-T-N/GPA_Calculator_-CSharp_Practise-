@@ -21,7 +21,7 @@ namespace GPA_Calculator
         {
             Console.Write("1) Calculate GPA for a whole year: ");
             Console.Write("2) Calculate GPA based on existing GPA: ");
-            string userInput =  Console.ReadLine();
+            string userInput = Console.ReadLine();
             int converted_user_input = 0;
             try
             {
@@ -71,16 +71,40 @@ namespace GPA_Calculator
                 }
                 double total = sum / (4.5 * 8);
                 Console.WriteLine("Result: " + total);
-                
+
             }
             else if (option == 2)
             {
                 double known_gpa = 0;
+                double num_of_courses = 0;
+                bool check = true;
 
                 Console.WriteLine("Please enter your gpa:");
-                known_gpa = Console.ReadLine();
+                known_gpa = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Please enter number of courses:");
+                num_of_courses = Convert.ToDouble(Console.ReadLine());
+
+                double value = known_gpa * num_of_courses;
+
+                int num_of_added_courses = 0;
+                while (check)
+                {
+                    Console.WriteLine("Please enter number of grade:");
+                    string input = Console.ReadLine();
+                    if (input == "e")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        value += Convert.ToDouble(input);
+                    }
+                    num_of_added_courses += 1;
+                }
+                double new_gpa = value / (num_of_added_courses + num_of_courses);
+                Console.WriteLine(new_gpa);
             }
         }
-
     }
 }
