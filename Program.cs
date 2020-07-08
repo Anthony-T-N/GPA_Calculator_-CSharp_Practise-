@@ -7,42 +7,52 @@ namespace GPA_Calculator
     {
         static void Main(string[] args)
         {
-            Program test = new Program();
-            test.introduction();
+            Program main_program = new Program();
+            main_program.introduction();
         }
         public void introduction()
         {
-            Console.WriteLine(" ");
             Console.WriteLine("Welcome to the GPA calculator");
-            Console.WriteLine("PLease select an option: ");
+            Console.WriteLine("Please select an option: ");
             message_options();
         }
         public void message_options()
         {
-            Console.Write("1) Calculate GPA for a whole year: ");
-            Console.Write("2) Calculate GPA based on existing GPA: ");
-            string userInput = Console.ReadLine();
-            int converted_user_input = 0;
-            try
+            while (true)
             {
-                converted_user_input = Convert.ToInt32(userInput);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine($"Unable to parse '{converted_user_input}'");
-            }
-            if (converted_user_input == 1)
-            {
-                Console.WriteLine("1) Calculate GPA for a whole year: ");
-                calculation(converted_user_input);
-            }
-            else if (converted_user_input == 2)
-            {
-                Console.WriteLine("2) Calculate GPA based on existing GPA: ");
-                calculation(converted_user_input);
+                Console.Write("1) Calculate GPA for a whole year: ");
+                Console.Write("2) Calculate GPA based on existing GPA: ");
+                Console.Write("3) Enter 'e' to exit program: ");
+                string user_input = Console.ReadLine();
+                int converted_user_input = 0;
+                try
+                {
+                    converted_user_input = Convert.ToInt32(user_input);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine($"Unable to parse '{converted_user_input}'");
+                }
+                if (converted_user_input == 1)
+                {
+                    Console.WriteLine(Calculation(converted_user_input));
+                }
+                else if (converted_user_input == 2)
+                {
+                    Console.WriteLine(Calculation(converted_user_input));
+                }
+                else if (user_input == "e")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("Please try again");
+                }
             }
         }
-        public void calculation(int option)
+        public double Calculation(int option)
         {
             if (option == 1)
             {
@@ -71,6 +81,7 @@ namespace GPA_Calculator
                 }
                 double total = sum / (4.5 * 8);
                 Console.WriteLine("Result: " + total);
+                return total;
 
             }
             else if (option == 2)
@@ -103,7 +114,11 @@ namespace GPA_Calculator
                     num_of_added_courses += 1;
                 }
                 double new_gpa = value / (num_of_added_courses + num_of_courses);
-                Console.WriteLine(new_gpa);
+                return new_gpa;
+            }
+            else
+            {
+                return 2;
             }
         }
     }
