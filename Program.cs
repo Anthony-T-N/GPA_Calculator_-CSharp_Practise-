@@ -20,10 +20,10 @@ namespace GPA_Calculator
         {
             while (true)
             {
-                Console.Write("1) Calculate GPA for a whole year: ");
+                Console.WriteLine("");
+                Console.Write("1) Custom GPA calculation: ");
                 Console.Write("2) Calculate future GPA based on existing GPA: ");
-                Console.Write("3) Custom GPA calculation: ");
-                Console.Write("4) Exit program.");
+                Console.Write("3) Exit program.");
                 Console.WriteLine("");
                 string user_input = Console.ReadLine();
                 int converted_user_input = 0;
@@ -37,17 +37,13 @@ namespace GPA_Calculator
                 }
                 if (converted_user_input == 1)
                 {
-                    Console.WriteLine(Calculation(converted_user_input));
+                    Console.WriteLine("Expected GPA: " + Calculation(converted_user_input));
                 }
                 else if (converted_user_input == 2)
                 {
                     Console.WriteLine("Expected GPA: " + Calculation(converted_user_input));
                 }
                 else if (converted_user_input == 3)
-                {
-                    Console.WriteLine("Expected GPA: " + Calculation(converted_user_input));
-                }
-                else if (converted_user_input == 4)
                 {
                     break;
                 }
@@ -59,72 +55,15 @@ namespace GPA_Calculator
         }
         public double Calculation(int option)
         {
+            double course_unit_value = 4.5;
+
             if (option == 1)
-            {
-                double convered_user_input;
-                Console.WriteLine("Please enter your course grades (0 - 7)");
-                List<double> grade_list = new List<double>();
-                for (int next = 0; next <= 7; next++)
-                {
-                    string userInput = Console.ReadLine();
-                    convered_user_input = Convert.ToDouble(userInput);
-                    Console.WriteLine(Convert.ToString(next + 1) + ") " + userInput);
-                    grade_list.Add(convered_user_input);
-                }
-                Console.WriteLine(grade_list.Count);
-                for (int next = 0; next <= grade_list.Count - 1; next++)
-                {
-                    Console.WriteLine(grade_list[next]);
-                }
-                double sum = 0;
-                double course_cal = 0;
-                for (int item = 0; item <= grade_list.Count - 1; item++)
-                {
-                    course_cal = grade_list[item];
-                    course_cal = course_cal * 4.5;
-                    sum = sum + course_cal;
-                }
-                double total = sum / (4.5 * 8);
-                Console.WriteLine("Result: " + total);
-                return total;
-
-            }
-            else if (option == 2)
-            {
-                double known_gpa = 0;
-                double num_of_courses = 0;
-                bool check = true;
-
-                Console.WriteLine("Please enter your current GPA:");
-                known_gpa = Convert.ToDouble(Console.ReadLine());
-
-                Console.WriteLine("Please enter number of courses you've completed so far:");
-                num_of_courses = Convert.ToDouble(Console.ReadLine());
-
-                double value = known_gpa * num_of_courses;
-
-                int num_of_added_courses = 0;
-                while (check)
-                {
-                    Console.WriteLine("Please enter a predicted/future grade:");
-                    string input = Console.ReadLine();
-                    if (input == "e")
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        value += Convert.ToDouble(input);
-                    }
-                    num_of_added_courses += 1;
-                }
-                double new_gpa = value / (num_of_added_courses + num_of_courses);
-                return new_gpa;
-            }
-            else if (option == 3)
             {
                 int item = 0;
                 double convered_user_input;
+                double sum = 0;
+                double course_cal = 0;
+
                 Console.WriteLine("Please enter your course grades (0 - 7)");
                 List<double> grade_list = new List<double>();
                 while (true)
@@ -140,24 +79,50 @@ namespace GPA_Calculator
                     item++;
                 }
                 Console.WriteLine("Courses completed: " + grade_list.Count);
-                for (int next = 0; next <= grade_list.Count - 1; next++)
-                {
-                    Console.WriteLine(grade_list[next]);
-                }
-                double sum = 0;
-                double course_cal = 0;
                 for (item = 0; item <= grade_list.Count - 1; item++)
                 {
                     course_cal = grade_list[item];
-                    course_cal = course_cal * 4.5;
+                    course_cal = course_cal * course_unit_value;
                     sum = sum + course_cal;
                 }
-                double total = sum / (4.5 * grade_list.Count);
-                return total;
+                return (sum / (course_unit_value * grade_list.Count));
+            }
+            else if (option == 2)
+            {
+                double known_gpa = 0;
+                double num_of_courses = 0;
+                int num_of_added_courses = 0;
+                int item = 0;
+
+                Console.WriteLine("Please enter your current GPA:");
+                known_gpa = Convert.ToDouble(Console.ReadLine());
+
+                Console.WriteLine("Please enter number of courses you've completed so far:");
+                num_of_courses = Convert.ToDouble(Console.ReadLine());
+
+                double value = known_gpa * num_of_courses;
+
+                Console.WriteLine("Please enter a predicted/future grade:");
+                while (true)
+                {
+                    string user_input = Console.ReadLine();
+                    if (user_input == "e")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine(Convert.ToString(item + 1) + ") " + user_input);
+                        value += Convert.ToDouble(user_input);
+                    }
+                    num_of_added_courses += 1;
+                    item++;
+                }
+                return (value / (num_of_added_courses + num_of_courses));
             }
             else
             {
-                return 2;
+                return 0;
             }
         }
     }
