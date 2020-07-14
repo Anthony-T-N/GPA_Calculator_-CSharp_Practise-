@@ -1,4 +1,6 @@
 # GPA_Calculator_-CSharp_Practise-
+An improved GPA calculator that can perform operations more dynamically
+
 
 Placeholder
 -
