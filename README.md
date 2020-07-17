@@ -1,5 +1,5 @@
 # GPA_Calculator_-CSharp_Practise-
-An improved command-line application (.NET Core) that calculates GPAs more dynamically.
+An improved command-line application (.NET Core) that calculates GPAs more dynamically (Grades are added to a list as the user enters additional grades).
 
 Placeholder
 -
