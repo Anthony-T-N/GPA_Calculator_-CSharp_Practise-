@@ -64,7 +64,7 @@ namespace GPA_Calculator
                 double sum = 0;
                 double course_cal = 0;
 
-                Console.WriteLine("Please enter your course grades (0 - 7)");
+                Console.WriteLine("Please enter your course grades (0 - 7):");
                 List<double> grade_list = new List<double>();
                 while (true)
                 {
@@ -102,7 +102,7 @@ namespace GPA_Calculator
 
                 double value = known_gpa * num_of_courses;
 
-                Console.WriteLine("Please enter a predicted/future grade:");
+                Console.WriteLine("Please enter a predicted/future grade (0 - 7):");
                 while (true)
                 {
                     string user_input = Console.ReadLine();
