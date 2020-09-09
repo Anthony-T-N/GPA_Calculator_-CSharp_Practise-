@@ -23,3 +23,4 @@ Options:
 ```
 Planned features
 -
+- GUI
