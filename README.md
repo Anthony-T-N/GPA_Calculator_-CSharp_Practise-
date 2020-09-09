@@ -15,8 +15,11 @@ An improved command-line application (using .NET Core) that calculates GPAs more
 
 Usage
 -
+Options:
 ```sh
 1) Custom GPA calculation:
 2) Calculate future GPA based on existing GPA:
 3) Exit program.
 ```
+Planned features
+-
