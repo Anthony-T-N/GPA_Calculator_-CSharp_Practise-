@@ -5,14 +5,16 @@
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/Anthony-T-N/GPA_Calculator_-CSharp_Practise-)
 
 # GPA_Calculator_(CSharp_Practise)
+Overview
+-
 An improved command-line application (using .NET Core) that calculates GPAs more dynamically than my previous calculators (Grades are added to a list as the user enters additional grades rather than using fixed arrays).
 
-Usage
--
 <p align="center"> 
 <img src="/sample.PNG">
 </p>
 
+Usage
+-
 ```sh
 1) Custom GPA calculation:
 2) Calculate future GPA based on existing GPA:
